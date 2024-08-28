@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>نموذج استحداث مادة دراسية</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #fff;
+            color: #333;
+            direction: rtl;
+            margin: 0;
+            padding: 0;
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            background-color: #fefffe;
+            color: #000000;
+            border-bottom: 2px solid #218838;
+        }
+        .header img {
+            height: 50px;
+        }
+        .header h1 {
+            margin: 0;
+            font-size: 24px;
+            text-align: center;
+            flex: 1;
+        }
+        .content {
+            margin: 20px auto;
+            padding: 30px;
+            background-color: #fff;
+            border-radius: 10px;
+            width: 90%;
+            max-width: 900px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border: 1px solid #ddd;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background-color: #f9f9f9;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        th {
+            background-color: #28a745;
+            color: #fff;
+            padding: 10px;
+        }
+        td {
+            padding: 10px;
+            text-align: center;
+        }
+        td input, td textarea {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            outline: none;
+            text-align: right;
+        }
+        td input[type="date"] {
+            text-align: center;
+        }
+        .save-button {
+            background-color: #28a745;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            margin-top: 20px;
+        }
+        .save-button:hover {
+            background-color: #218838;
+            transform: scale(1.05);
+        }
+        .section-title {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #28a745;
+        }
+        .signature-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+        }
+        .signature-row div {
+            width: 48%;
+        }
+        .signature-row label {
+            font-weight: bold;
+        }
+        .content-footer {
+            text-align: center;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSkNF4E1jUzti1Cp_c_j9Z1dRNFR6jlG38eQg&s" alt="شعار اليمين">
+        <h1>نموذج استحداث مادة دراسية</h1>
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTFo_HeSG4_NSbpNTHz-R758fp1eZkEU-67UQ&sc_j9Z1dRNFR6jlG38eQg&s" alt="شعار اليسار">
+    </div>
+    <div class="content">
+        <div class="section">
+            <div class="section-title">تفاصيل المادة الدراسية:</div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>رقم</th>
+                        <th>العنصر</th>
+                        <th>التفاصيل</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>الاسم المقترح للمادة الدراسية</td>
+                        <td><input type="text"></td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>الرقم المقترح للمادة الدراسية</td>
+                        <td><input type="text"></td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>الساعات المعتمدة (نظرية، عملية)</td>
+                        <td><input type="text"></td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>المتطلبات السابقة/المتطلبات المتزامنة</td>
+                        <td><input type="text"></td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>اسم البرنامج</td>
+                        <td><input type="text"></td>
+                    </tr>
+                    <tr>
+                        <td>6</td>
+                        <td>رقم البرنامج</td>
+                        <td><input type="text"></td>
+                    </tr>
+                    <tr>
+                        <td>7</td>
+                        <td>الكلية</td>
+                        <td><input type="text"></td>
+                    </tr>
+                    <tr>
+                        <td>8</td>
+                        <td>القسم</td>
+                        <td><input type="text"></td>
+                    </tr>
+                    <tr>
+                        <td>9</td>
+                        <td>المستوى الذي تُدرّس فيه المادة الدراسية</td>
+                        <td><input type="text"></td>
+                    </tr>
+                    <tr>
+                        <td>10</td>
+                        <td>السنة الدراسية/ الفصل الدراسي لطرح المادة حسب الخطة الاسترشادية</td>
+                        <td><input type="text"></td>
+                    </tr>
+                    <tr>
+                        <td>11</td>
+                        <td>الدرجة العلمية للبرنامج</td>
+                        <td><input type="text"></td>
+                    </tr>
+                    <tr>
+                        <td>12</td>
+                        <td>الأقسام الأخرى المشتركة في تدريس المادة الدراسية</td>
+                        <td><input type="text"></td>
+                    </tr>
+                    <tr>
+                        <td>13</td>
+                        <td>لغة التدريس</td>
+                        <td><input type="text"></td>
+                    </tr>
+                    <tr>
+                        <td>14</td>
+                        <td>التاريخ المقترح لطرح المادة الدراسية</td>
+                        <td><input type="date" name="coordinatorDate"></td>
+                    </tr>
+                    <tr>
+                        <td>15</td>
+                        <td>تاريخ تقديم الطلب</td>
+                        <td><input type="date" name="coordinatorDate"></td>
+                    </tr>
+                    <tr>
+                        <td>16</td>
+                        <td>عضو هيئة التدريس المعني (الاسم، الوظيفة، رقم الهاتف، البريد الإلكتروني)</td>
+                        <td><input type="text"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="section">
+            <div class="section-title">معلومات إضافية:</div>
+            <div>17. مبررات استحداث المادة الدراسية الجديدة</div>
+            <textarea id="justification" name="justification" placeholder="أدخل مبررات استحداث المادة الدراسية هنا..."></textarea>
+
+            <div>18. وصف المادة الدراسية</div>
+            <textarea id="description" name="description" placeholder="أدخل وصف المادة الدراسية هنا..."></textarea>
+
+            <div>19. نتاجات التعلم المستهدفة للمادة الدراسية</div>
+            <textarea id="learningOutcomes" name="learningOutcomes" placeholder="أدخل نتاجات التعلم المستهدفة هنا..."></textarea>
+
+            <div>20. النشاطات والاستراتيجيات التدريسية وأساليب التقييم</div>
+            <textarea id="teachingStrategies" name="teachingStrategies" placeholder="أدخل النشاطات والاستراتيجيات التدريسية وأساليب التقييم هنا..."></textarea>
+
+            <div>21. الكوادر الأكاديمية والإدارية المطلوبة لاستحداث المادة الدراسية</div>
+            <textarea id="staffRequirements" name="staffRequirements" placeholder="أدخل الكوادر الأكاديمية والإدارية المطلوبة هنا..."></textarea>
+
+            <div>22. المرافق والمعدات والأجهزة المطلوبة</div>
+            <textarea id="facilitiesRequirements" name="facilitiesRequirements" placeholder="على سبيل المثال، مختبرات علمية وحاسوبية، برمجيات متخصصة وغيرها..."></textarea>
+
+            <div>23. معلومات إضافية</div>
+            <textarea id="additionalInfo" name="additionalInfo" placeholder="أدخل أي معلومات إضافية هنا..."></textarea>
+        </div>
+
+        <div class="signatures">
+            <div class="signature-row">
+                <div>
+                    <label>مقرر لجنة الخطة/ القسم:</label>
+                    <input type="text">
+                </div>
+                <div>
+                    <label>التوقيع:</label>
+                    <input type="text">
+                </div>
+            </div>
+            <div class="signature-row">
+                <div>
+                    <label>رئيس القسم:</label>
+                    <input type="text">
+                </div>
+                <div>
+                    <label>التوقيع:</label>
+                    <input type="text">
+                </div>
+            </div>
+            <div class="signature-row">
+                <div>
+                    <label>مقرر لجنة الخطة/ الكلية:</label>
+                    <input type="text">
+                </div>
+                <div>
+                    <label>التوقيع:</label>
+                    <input type="text">
+                </div>
+            </div>
+            <div class="signature-row">
+                <div>
+                    <label>العميد:</label>
+                    <input type="text">
+                </div>
+                <div>
+                    <label>التوقيع:</label>
+                    <input type="text">
+                </div>
+            </div>
+        </div>
+
+        <div class="content-footer">
+            <button class="save-button">حفظ البيانات</button>
+        </div>
+    </div>
+
+    <script>
+        function addPlan() {
+            const planButton = document.querySelector('.remove-plan-button');
+            planButton.classList.toggle('hidden');
+        }
+
+        function removePlan() {
+            const planButton = document.querySelector('.remove-plan-button');
+            planButton.classList.toggle('hidden');
+        }
+    </script>
+</body>
+</html>
+

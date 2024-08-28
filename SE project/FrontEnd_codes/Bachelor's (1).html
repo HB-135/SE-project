@@ -1,0 +1,1142 @@
+
+<!DOCTYPE html>
+<html lang="ar">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الخطة الدراسية - درجة البكالوريوس</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #fff;
+            color: #333;
+            direction: rtl;
+            margin: 0;
+            padding: 0;
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            background-color: #fefffe;
+            color: #000000;
+            border-bottom: 2px solid #218838;
+        }
+        .header img {
+            height: 55px;
+        }
+        .header h1 {
+            margin: 0;
+            font-size: 24px;
+            text-align: center;
+            flex: 1;
+        }
+        .content {
+            background: #fff;
+            padding: 30px;
+            margin: 20px auto;
+            border-radius: 10px;
+            max-width: 900px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border: 1px solid #d4d4d4;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        table, th, td {
+            border: 1px solid #333;
+        }
+        th, td {
+            padding: 10px;
+            text-align: center;
+        }
+        td input {
+            width: 100%;
+            padding: 5px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+            outline: none;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+        td input:focus {
+            border-color: #66afe9;
+            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+        }
+        textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+            outline: none;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+        textarea:focus {
+            border-color: #66afe9;
+            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+        }
+        .save-button, .add-plan-button, .remove-plan-button, .add-course-button, .remove-course-button, .add-elective-button, .remove-elective-button {
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 10px 0;
+            transition: background-color 0.3s ease, opacity 0.3s ease;
+        }
+        .save-button {
+            background-color: #28a745;
+        }
+        .save-button:hover {
+            background-color: #218838;
+        }
+        .add-plan-button, .add-course-button, .add-elective-button {
+            background-color: #218838;
+        }
+        .add-plan-button:hover, .add-course-button:hover, .add-elective-button:hover {
+            background-color: #1e7e34;
+        }
+        .remove-plan-button, .remove-course-button, .remove-elective-button {
+            background-color: #dc3545;
+        }
+        .remove-plan-button:hover, .remove-course-button:hover, .remove-elective-button:hover {
+            background-color: #c82333;
+        }
+        .remove-plan-button.hidden, .remove-course-button.hidden, .remove-elective-button.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+        .content-footer {
+            text-align: center;
+            margin: 20px 0;
+        }
+        .section {
+            margin: 20px 0;
+        }
+        .section-title {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .priority-input {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        .priority-input label {
+            margin-right: 10px;
+            white-space: nowrap;
+        }
+        .priority-input input {
+            flex: 1;
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+            outline: none;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+        .priority-input input:focus {
+            border-color: #66afe9;
+            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+        }
+        .remove-table-button {
+            background-color: #c82333;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 10px 0;
+            transition: background-color 0.3s ease, opacity 0.3s ease;
+        }
+        .remove-table-button.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body> 
+<div class="header">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSkNF4E1jUzti1Cp_c_j9Z1dRNFR6jlG38eQg&s" alt="شعار اليمين">
+        <h1>الخطة الدراسية - درجة البكالوريوس </h1>
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTFo_HeSG4_NSbpNTHz-R758fp1eZkEU-67UQ&sc_j9Z1dRNFR6jlG38eQg&s" alt="شعار اليسار">
+    </div>
+	
+	<div class="content">
+        <div class="content-header">
+        </div>
+
+	 <table>
+            <thead>
+                <tr>
+                    <th>رقم</th>
+                    <th>الاسم</th>
+                    <th>ملاحظات</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>الكلية </td>
+                    <td><input type="text"></td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>القسم</td>
+                    <td><input type="text"></td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>اسم الدرجة العلمية (بالعربية)</td>
+                    <td><input type="text"></td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>اسم الدرجة العلمية (بالإنجليزية)</td>
+                    <td><input type="text"></td>
+                </tr>
+            </tbody>
+        </table>
+		<br><br>
+
+
+        
+           
+           
+ <div class="section">
+
+            <h2>مكونات الخطة:</h2>
+            <p>  تتكون الخطة الدراسية في <input type="text"> من <input type="text" style="width: 40px;"> :ساعة معتمدة موزعة على النحو الآتي </p>
+			
+			
+			<table>
+        <tr>
+            <th>التسلسل</th>
+            <th>نوع المتطلب</th>
+            <th>الساعات المعتمدة</th>
+        </tr>
+        <tr>
+            <td>أولاً</td>
+            <td>متطلبات الجامعة</td>
+            <td><input type="text" name="credit_hours_1"></td>
+        </tr>
+        <tr>
+            <td>ثانياً</td>
+            <td>متطلبات الكلية</td>
+            <td><input type="text" name="credit_hours_2"></td>
+        </tr>
+        <tr>
+            <td rowspan="4">ثالثاً</td>
+            <td>متطلبات التخصص (<input type="text" name="specialization_hours" style="width: 40px;">) ساعة موزعة كما يأتي:</td>
+            <td rowspan="1"></td>
+        </tr>
+        <tr>
+            <td>أ. متطلبات قسم إجباري</td>
+            <td><input type="text" name="mandatory_hours"></td>
+        </tr>
+        <tr>
+            <td>ب. متطلبات قسم اختياري</td>
+            <td><input type="text" name="elective_hours"></td>
+        </tr>
+        <tr>
+            <td>المجموع</td>
+            <td><input type="text" name="total_hours"></td>
+        </tr>
+    </table>
+	<div class="content-header">
+	 <h2>نظام الترميز:</h2>
+        </div>
+        
+        
+		<p class="right-align"> رموز الأقسام:</p>
+        <table id="codes-table">
+            <thead>
+                <tr>
+                    <th>رمز القسم</th>
+                    <th>اسم القسم</th>
+                    <th>الإجراءات</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><input type="text"></td>
+                    <td><input type="text"></td>
+                    <td><button class="remove-course-button" onclick="removeRow(this)">حذف رمز</button></td>
+                </tr>
+            </tbody>
+        </table>
+        <button class="add-course-button" onclick="addRow('codes-table')">إضافة رمز</button>
+        
+		<p class="right-align"> رموز المواد:</p>
+        <table id="codes-table2">
+            <thead>
+                <tr>
+                    <th>رمز المجال</th>
+                    <th>عنوان مجال التخصص</th>
+                    <th>الإجراءات</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><input type="text"></td>
+                    <td><input type="text"></td>
+                    <td><button class="remove-course-button" onclick="removeRow(this)">حذف رمز</button></td>
+                </tr>
+            </tbody>
+        </table>
+        <button class="add-course-button" onclick="addRow('codes-table2')">إضافة رمز</button>
+        <br>
+     <table>
+    <tr>
+        <th colspan="7">أرقام المواد تكون من سبعة منازل</th>
+		</tr>
+    
+	</tr>
+        <tr>
+		 <th colspan="2">التسلسل</th>
+		  <th>المستوى</th>
+            <th colspan="2">القسم</th>
+            <th colspan="2">الكلية</th>
+            
+        </tr>
+        <tr>
+			
+            <td>x</td>
+            <td>X</td>
+            <td>X</td>
+            <td>X</td>
+			  <td>x </td>
+			  <td>x</td>
+			  <td>x </td>
+        </tr>
+    </table>
+    <br>
+<div class="section">
+            <div>تتكون مواد هذه الخطة من ( <input type="text" style="width: 60px; text-align: center;"> ) موزعة كما يلي:</div>
+            <div>1. مواد إجبارية ( <input type="text" style="width: 40px;"> ) ساعة معتمدة كما يلي:</div>
+			<h2> اولا: متطلبات الجامعة:(27)ساعة معتمدة موزعة على النحو الآتي:</h2>
+			
+			<p>يتوجب على كافة الطلبة المقبولين في الجامعة التقدم إلى امتحانات تصنيفية في اللغتين العربية واإلنجليزية والحاسوب تعدها أو تعتمدها الجامعة 
+للوقوف على مستوياتهم فيها، وبناء على نتائج االمتحانات، إما أن يدرس الطالب مادة أو أكثر من متطلبات البرنامج التحضيري أو يعفى من مواد 
+البرنامج.</p>
+
+ <table>
+    <thead>
+        <tr>
+            <th colspan="6">متطلبات جامعة اجبارية عامة(0-15) ساعة</th>
+        </tr>
+        <tr>
+            <th>الرقم</th>
+            <th>اسم المادة</th>
+            <th>رقم المادة</th>
+            <th>الساعات المعتمدة</th>
+            <th>متطلب سابق</th>
+            <th>ملاحظات</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>1</td>
+            <td>خدمة المجتمع</td>
+            <td>0300150</td>
+            <td>0</td>
+            <td>-</td>
+            <td><input type="text"></td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>الامتحان التصنيفي في مهارات الحاسوب</td>
+            <td>1902098</td>
+            <td>0</td>
+            <td>-</td>
+            <td><input type="text"></td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>أساسيات الحاسوب</td>
+            <td>1932099</td>
+            <td>3</td>
+            <td>1902098</td>
+            <td>(ناجح/راسب)</td>
+        </tr>
+        <tr>
+            <td>4</td>
+            <td>الامتحان التصنيفي في اللغة العربية</td>
+            <td>3201098</td>
+            <td>0</td>
+            <td>-</td>
+            <td><input type="text"></td>
+        </tr>
+        <tr>
+            <td>5</td>
+            <td>أساسيات اللغة العربية</td>
+            <td>3201099</td>
+            <td>3</td>
+            <td>3201098</td>
+            <td>(ناجح/راسب)</td>
+        </tr>
+        <tr>
+            <td>6</td>
+            <td>مهارات اللغة العربية</td>
+            <td>3201100</td>
+            <td>3</td>
+            <td>3201099</td>
+            <td>(ناجح/راسب)</td>
+        </tr>
+        <tr>
+            <td>7</td>
+            <td>الامتحان التصنيفي في اللغة الإنجليزية</td>
+            <td>3202098</td>
+            <td>0</td>
+            <td>-</td>
+            <td><input type="text"></td>
+        </tr>
+        <tr>
+            <td>8</td>
+            <td>أساسيات اللغة الانجليزية</td>
+            <td>3202099</td>
+            <td>3</td>
+            <td>3202098</td>
+            <td>(ناجح/راسب)</td>
+        </tr>
+        <tr>
+            <td>9</td>
+            <td>مهارات اللغة الإنجليزية</td>
+            <td>3202100</td>
+            <td>3</td>
+            <td>3202099</td>
+            <td>(ناجح/راسب)</td>
+        </tr>
+    </tbody>
+</table>
+		
+		 <table>
+ 
+ 
+ <thead>
+ <tr>
+        <th colspan="6">متطلبات جامعة إجبارية (18 ساعة)</th>
+		</tr>
+                    <tr>
+					<th>الرقم</th>
+                       
+                        <th>اسم المادة</th>
+						 <th>رقم المادة</th>
+                        <th>الساعات المعتمدة</th>
+                        <th>متطلب سابق</th>
+                        <th>ملاحظات</th>
+                     
+                    </tr>
+                </thead>
+    
+		
+		
+		
+		
+		<tr>
+		<th>1</th>
+		<th> العلوم العسكرية</th>
+	<th>2220100</th>
+	<th>3</th>
+	<th>-</th>
+	<th><input type="text"></th>
+		</tr>
+		<tr>
+		<th>2</th>
+		<th>الثقافة الوطنية</th>
+	<th>3400100</th>
+	<th>3</th>
+	<th>-</th>
+	<th><input type="text"></th>
+		</tr>
+		<tr>
+		<th>3</th>
+		<th>الأخلاق والقيم الانسانية</th>
+	<th>3410100</th>
+	<th>3</th>
+	<th>-</th>
+	<th><input type="text"></th>
+		</tr>
+		<tr>
+		<th>4</th>
+		<th>الريادة والابتكار والبحث العلمي</th>
+	<th>3410101</th>
+	<th>3</th>
+	<th>341010/1932099</th>
+	<th><input type="text"></th>
+	</tr>
+		<tr>
+		<th>5</th>
+		<th> المهارات الحياتية والعملية </th>
+	<th>3410102</th>
+	<th>3</th>
+	<th>341010/1932099</th>
+	<th><input type="text"></th>
+		</tr>
+		<tr>
+		<th>6</th>
+		<th>مقدمة في الفلسفة والتفكير الناقد</th>
+	<th>3400103</th>
+	<th>3</th>
+	<th>341010/1932099</th>
+	<th><input type="text"></th>
+		</tr>
+		
+	
+		 <table>
+ 
+ 
+ <thead>
+ <tr>
+        <th colspan="6"><p>متطلبات الجامعة الإختيارية ( 9 مواد)</p>
+<p>يختارها الطالب من المجموعات الثلاث المذكورة ادناه بواقع مادة واحدة من كل مجموعة على أن تكون جميعها من خارج قسم التخصص</P>
+<p>(المجموعة الأولى)</p>
+		</th>
+		</tr>
+                    <tr>
+					<th>الرقم</th>
+                       
+                        <th>اسم المادة</th>
+						 <th>رقم المادة</th>
+                        <th>الساعات المعتمدة</th>
+                        <th>متطلب سابق</th>
+                        <th>ملاحظات</th>
+                     
+                    </tr>
+                </thead>
+    
+		
+		
+		
+		
+		<tr>
+		<th>1</th>
+		<th> الاسلام وقضايا العصر</th>
+	<th>0400101</th>
+	<th>3</th>
+	<th>-</th>
+	<th><input type="text"></th>
+		</tr>
+		<tr>
+		<th>2</th>
+		<th>الحضارة العربية الاسلامية</th>
+	<th>2300101</th>
+	<th>3</th>
+	<th>-</th>
+	<th><input type="text"></th>
+		</tr>
+		<tr>
+		<th>3</th>
+		<th>الاردن تاريخ وحضارة</th>
+	<th>2300102</th>
+	<th>3</th>
+	<th>-</th>
+	<th><input type="text"></th>
+		</tr>
+		<tr>
+		<th>4</th>
+		<th>امهات الكتب</th>
+	<th>3400107</th>
+	<th>3</th>
+	<th>-</th>
+	<th><input type="text"></th>
+	</tr>
+		<tr>
+		<th>5</th>
+		<th> القدس </th>
+	<th>3400108</th>
+	<th>3</th>
+	<th>-</th>
+	<th><input type="text"></th>
+		</tr>
+		
+		
+		</table>
+		
+		
+		 <table>
+ 
+ 
+ <thead>
+ <tr>
+        <th colspan="6"><p>(المجموعة الثانية)</p>
+		<p>المتطلبات الاختيارية </p>
+		</th>
+		</tr>
+                    <tr>
+					<th>الرقم</th>
+                       
+                        <th>اسم المادة</th>
+						 <th>رقم المادة</th>
+                        <th>الساعات المعتمدة</th>
+                        <th>متطلب سابق</th>
+                        <th>ملاحظات</th>
+                     
+                    </tr>
+                </thead>
+    
+		
+		
+		
+		
+		<tr>
+		<th>1</th>
+		<th> الثقافة البيئية والتنمية</th>
+	<th>0310102</th>
+	<th>3</th>
+	<th>-</th>
+	<th><input type="text"></th>
+		</tr>
+		<tr>
+		<th>2</th>
+		<th>الثقافة الاسلامية</th>
+	<th>0400102</th>
+	<th>3</th>
+	<th>-</th>
+	<th><input type="text"></th>
+		</tr>
+		<tr>
+		<th>3</th>
+		<th>الثقافة الصحية</th>
+	<th>0720100</th>
+	<th>3</th>
+	<th>-</th>
+	<th><input type="text"></th>
+		</tr>
+		<tr>
+		<th>4</th>
+		<th>الثقافة القانونية</th>
+	<th>1000102</th>
+	<th>3</th>
+	<th>-</th>
+	<th><input type="text"></th>
+	</tr>
+		<tr>
+		<th>5</th>
+		<th> الثقافة البدنية </th>
+	<th>1100100</th>
+	<th>3</th>
+	<th>-</th>
+	<th><input type="text"></th>
+		</tr>
+		
+		
+		</table>
+		<table>
+ 
+ 
+ <thead>
+ <tr>
+        <th colspan="6"><p>(المجموعة الثالثة)</p>
+		<p>المتطلبات الاختيارية </p>
+		</th>
+		</tr>
+                    <tr>
+					<th>الرقم</th>
+                       
+                        <th>اسم المادة</th>
+						 <th>رقم المادة</th>
+                        <th>الساعات المعتمدة</th>
+                        <th>متطلب سابق</th>
+                        <th>ملاحظات</th>
+                     
+                    </tr>
+                </thead>
+    
+		
+		
+		
+		
+		<tr>
+		<th>1</th>
+		<th> التجارة الالكترونية </th>
+	<th>1600100</th>
+	<th>3</th>
+	<th>-</th>
+	<th><input type="text"></th>
+		</tr>
+		<tr>
+		<th>2</th>
+		<th>وسائل التواصل الاجتماعي</th>
+	<th>1900101</th>
+	<th>3</th>
+	<th>-</th>
+	<th><input type="text"></th>
+		</tr>
+		<tr>
+		<th>3</th>
+		<th>تذوق الفنون</th>
+	<th>2000100</th>
+	<th>3</th>
+	<th>-</th>
+	<th><input type="text"></th>
+		</tr>
+		<tr>
+		<th>4</th>
+		<th>اللغة الاجنبية</th>
+	<th>2200103</th>
+	<th>3</th>
+	<th>-</th>
+	<th><input type="text"></th>
+		</tr>
+		<tr>
+		<th>5</th>
+		<th> موضوع خاص </th>
+	<th>3400106</th>
+	<th>3</th>
+	<th>-</th>
+	<th><input type="text"></th>
+		</tr>
+		
+		
+		</table>
+		
+		
+		
+		<div class="section">
+		<br>
+            <div>ثانيا:متطلبات الكلية: ( <input type="text" style="width: 60px; text-align: center;"> ) موزعة كما يلي:</div>
+            <div>1. مواد إجبارية ( <input type="text" style="width: 40px;"> ) ساعة معتمدة كما يلي:</div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>رقم المادة</th>
+                        <th>اسم المادة</th>
+                        <th>الساعات المعتمدة</th>
+                        <th>نظري</th>
+                        <th>عملي</th>
+                        <th>المتطلب السابق</th>
+                    </tr>
+                </thead>
+                <tbody id="course-table-body">
+                    <tr>
+                        <td><input type="text"></td>
+                        <td><input type="text"></td>
+                        <td><input type="text"></td>
+                        <td><input type="text"></td>
+                        <td><input type="text"></td>
+                        <td><input type="text"></td>
+                    </tr>
+                </tbody>
+            </table>
+            <button class="add-course-button" onclick="addCourseRow('course-table-body','remove-course-button')">إضافة مادة</button>
+            <button class="remove-course-button" id="remove-course-button" onclick="removeCourseRow('course-table-body','remove-course-button')">حذف مادة</button>
+        </div>
+
+        <div class="section">
+            <div>2. مواد اختيارية  ( <input type="text" style="width: 40px;"> ) ساعة معتمدة يتم اختيارها مما يلي:</div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>رقم المادة</th>
+                        <th>اسم المادة</th>
+                        <th>الساعات المعتمدة</th>
+                        <th>نظري</th>
+                        <th>عملي</th>
+                        <th>المتطلب السابق</th>
+                    </tr>
+                </thead>
+                <tbody id="elective-table-body">
+                    <tr>
+                        <td><input type="text"></td>
+                        <td><input type="text"></td>
+                        <td><input type="text"></td>
+                        <td><input type="text"></td>
+                        <td><input type="text"></td>
+                        <td><input type="text"></td>
+                    </tr>
+                </tbody>
+            </table>
+            <button class="add-elective-button" onclick="addElectiveRow('elective-table-body','remove-course-button')">إضافة مادة اختيارية</button>
+            <button class="remove-elective-button" id="remove-elective-button" onclick="removeElectiveRow('elective-table-body','remove-course-button')">حذف مادة اختيارية</button>
+        </div>
+
+
+
+<div class="section">
+<br>
+            <div>ثالثا:متطلبات التخصص: ( <input type="text" style="width: 60px; text-align: center;"> ) موزعة كما يلي:</div>
+            <div>1. متطلبات التخصص الإجبارية ( <input type="text" style="width: 40px;"> ) ساعة معتمدة كما يلي:</div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>رقم المادة</th>
+                        <th>اسم المادة</th>
+                        <th>الساعات المعتمدة</th>
+                        <th>نظري</th>
+                        <th>عملي</th>
+                        <th>المتطلب السابق</th>
+                    </tr>
+                </thead>
+                <tbody id="course-table-body2">
+                    <tr>
+                        <td><input type="text"></td>
+                        <td><input type="text"></td>
+                        <td><input type="text"></td>
+                        <td><input type="text"></td>
+                        <td><input type="text"></td>
+                        <td><input type="text"></td>
+                    </tr>
+                </tbody>
+            </table>
+            <button class="add-course-button" onclick="addCourseRow('course-table-body2','remove-course-button2')">إضافة مادة</button>
+            <button class="remove-course-button" id="remove-course-button2" onclick="removeCourseRow('course-table-body2','remove-course-button2')">حذف مادة</button>
+        </div>
+
+        <div class="section_2">
+            <div>2. متطلبات التخصص الإختيارية  ( <input type="text" style="width: 40px;"> ) ساعة معتمدة يتم اختيارها مما يلي:</div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>رقم المادة</th>
+                        <th>اسم المادة</th>
+                        <th>الساعات المعتمدة</th>
+                        <th>نظري</th>
+                        <th>عملي</th>
+                        <th>المتطلب السابق</th>
+                    </tr>
+                </thead>
+                <tbody id="elective-table-body2">
+                    <tr>
+                        <td><input type="text"></td>
+                        <td><input type="text"></td>
+                        <td><input type="text"></td>
+                        <td><input type="text"></td>
+                        <td><input type="text"></td>
+                        <td><input type="text"></td>
+                    </tr>
+                </tbody>
+            </table>
+            <button class="add-elective-button" onclick="addElectiveRow('elective-table-body2','remove-elective-button2')">إضافة مادة اختيارية</button>
+            <button class="remove-elective-button" id="remove-elective-button2" onclick="removeElectiveRow('elective-table-body2','remove-elective-button2')">حذف مادة اختيارية</button>
+        </div>
+
+
+
+<div class="section_2">
+<br><br>
+            <div>رابعا:المواد التي تقدمها الأقسام الأخرى لبرنامج البكالوريوس: </div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>رقم المادة</th>
+                        <th>اسم المادة</th>
+                        <th>الساعات المعتمدة</th>
+                        <th>نظري</th>
+                        <th>عملي</th>
+                        <th>المتطلب السابق</th>
+                    </tr>
+                </thead>
+                <tbody id="course-table-body4">
+                    <tr>
+                        <td><input type="text"></td>
+                        <td><input type="text"></td>
+                        <td><input type="text"></td>
+                        <td><input type="text"></td>
+                        <td><input type="text"></td>
+                        <td><input type="text"></td>
+                    </tr>
+                </tbody>
+            </table>
+            <button class="add-course-button" onclick="addCourseRow('course-table-body4','remove-course-button4')">إضافة مادة</button>
+            <button class="remove-course-button" id="remove-course-button4" onclick="removeCourseRow('course-table-body4','remove-course-button4')">حذف مادة</button>
+        </div>
+		
+			<div class="content-header">
+	
+	</div>
+		<br><br>
+		<div class="section_2">
+		
+            <div>خامسا:الخطة الاسترشادية/السنوية </div>
+			
+			<div id="tableContainer">
+         
+				<div class="content-header">
+	
+	</div>
+			<button class="add-course-button" onclick="addNewTable()">إضافة عام أكاديمي</button>
+
+
+	
+
+
+        </div>
+		<br><br>
+		<div>سادسا: وصف المواد لبرنامج: <input type="text" style="width: 120px;" ></div>
+		<br>
+   <button class="add-course-button" onclick="addTable()">إضافة مادة</button>
+    <button class="remove-course-button" onclick="removeTable()">حذف مادة</button>
+
+    
+	<div class="content-footer">
+            <button class="save-button">حفظ البيانات</button>
+        </div>
+    </div>
+		
+		<script>
+        function addPlanRow() {
+            var tableBody = document.getElementById('plan-table-body');
+            var newRow = document.createElement('tr');
+            newRow.innerHTML = '<td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td>';
+            tableBody.appendChild(newRow);
+            document.getElementById('remove-plan-button').classList.remove('hidden');
+        }
+
+        function removePlanRow() {
+            var tableBody = document.getElementById('plan-table-body');
+            if (tableBody.rows.length > 1) {
+                tableBody.deleteRow(-1);
+            }
+            if (tableBody.rows.length === 1) {
+                document.getElementById('remove-plan-button').classList.add('hidden');
+            }
+        }
+
+        function addCourseRow(id,id2) {
+            var tableBody = document.getElementById(id);
+            var newRow = document.createElement('tr');
+            newRow.innerHTML = '<td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td>';
+            tableBody.appendChild(newRow);
+            document.getElementById(id2).classList.remove('hidden');
+        }
+
+        function removeCourseRow(id,id2) {
+            var tableBody = document.getElementById(id);
+            if (tableBody.rows.length > 1) {
+                tableBody.deleteRow(-1);
+            }
+            if (tableBody.rows.length === 1) {
+                document.getElementById(id2).classList.add('hidden');
+            }
+        }
+
+        function addElectiveRow(id,id2) {
+            var tableBody = document.getElementById(id);
+            var newRow = document.createElement('tr');
+            newRow.innerHTML = '<td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td>';
+            tableBody.appendChild(newRow);
+            document.getElementById(id2).classList.remove('hidden');
+        }
+
+        function removeElectiveRow(id,id2) {
+            var tableBody = document.getElementById(id);
+            if (tableBody.rows.length > 1) {
+                tableBody.deleteRow(-1);
+            }
+            if (tableBody.rows.length === 1) {
+                document.getElementById(id2).classList.add('hidden');
+            }
+        }
+
+		function addRow( id) {
+            const table = document.getElementById(id).getElementsByTagName('tbody')[0];
+            const newRow = table.insertRow();
+            const cell1 = newRow.insertCell(0);
+            const cell2 = newRow.insertCell(1);
+            const cell3 = newRow.insertCell(2);
+            
+            cell1.innerHTML = '<input type="text">';
+            cell2.innerHTML = '<input type="text">';
+            cell3.innerHTML = '<button class="remove-symbol-button" onclick="removeRow(this)">حذف رمز</button>';
+        }
+      
+        function removeRow(button) {
+            const row = button.closest('tr');
+            row.remove();
+        }
+		
+		
+
+function addNewTable() {
+    const tableContainer = document.getElementById('tableContainer');
+
+    // Create a wrapper div for each table and its buttons
+    const wrapper = document.createElement('div');
+    wrapper.className = 'table-container';
+    const wrapperId = `wrapper-${tableContainer.children.length + 1}`;
+    wrapper.id = wrapperId;
+
+    // Create a new table
+    const tableIdSuffix = tableContainer.children.length + 1;
+    const table = document.createElement('table');
+    table.id = `yeh-${tableIdSuffix}`; // Ensure unique ID for each new table
+
+    // Create the table header
+    const thead = document.createElement('thead');
+    thead.innerHTML = `
+        <tr>
+            <td colspan='6'>العام الاكاديمي (<input type="text" style="width: 40px;">)</td>
+        </tr>
+        <tr>
+            <th colspan='3'>الفصل(الأول)</th>
+            <th colspan='3'>الفصل(الثاني)</th>
+        </tr>
+        <tr>
+            <th>رقم المادة</th>
+            <input type="text">
+            <th>اسم المادة</th>
+            <th>الساعات المعتمدة</th>
+            <th>رقم المادة</th>
+            <th>اسم المادة</th>
+            <th>الساعات المعتمدة</th>
+        </tr>
+    `;
+    table.appendChild(thead);
+
+    // Create the table body
+    const tbody = document.createElement('tbody');
+    tbody.id = `course-table-body${tableIdSuffix}`;
+    tbody.innerHTML = `
+        <tr>
+            <td><input type="text"></td>
+            <td><input type="text"></td>
+            <td><input type="text"></td>
+            <td><input type="text"></td>
+            <td><input type="text"></td>
+            <td><input type="text"></td>
+        </tr>
+    `;
+    table.appendChild(tbody);
+
+    // Create the table footer
+    const tfoot = document.createElement('tfoot');
+    tfoot.innerHTML = `
+        <tr>
+            <th colspan='2'>المجموع</th>
+            <td><input type="text"></td>
+            <th colspan='2'>المجموع</th>
+            <td><input type="text"></td>
+        </tr>
+    `;
+    table.appendChild(tfoot);
+
+    // Create the "إضافة مادة" button
+    const addButton = document.createElement('button');
+    addButton.className = 'add-course-button';
+    addButton.textContent = 'إضافة مادة';
+    addButton.onclick = function() {
+        addCourseRow(tbody.id, removeButton.id);
+    };
+
+    // Create the "حذف مادة" button
+    const removeButton = document.createElement('button');
+    removeButton.className = 'remove-course-button';
+    removeButton.id = `remove-course-button${tableIdSuffix}`;
+    removeButton.textContent = 'حذف مادة';
+    removeButton.onclick = function() {
+        removeCourseRow(tbody.id, removeButton.id);
+    };
+
+    // Create the "حذف جدول" (Remove Table) button and wrap it in a div for line separation
+    const removeTableButtonWrapper = document.createElement('div');
+    removeTableButtonWrapper.style.marginTop = '10px'; // Optional: add some space before the button
+
+    const removeTableButton = document.createElement('button');
+    removeTableButton.textContent = 'حذف العام الأكاديمي';
+    removeTableButton.className = 'remove-table-button';
+    removeTableButton.onclick = function() {
+        removeTable(wrapperId);
+    };
+
+    // Append the "حذف جدول" button to its wrapper
+    removeTableButtonWrapper.appendChild(removeTableButton);
+
+    // Append the table and buttons to the wrapper
+    wrapper.appendChild(table);
+    wrapper.appendChild(addButton);
+    wrapper.appendChild(removeButton);
+    wrapper.appendChild(removeTableButtonWrapper); // Add wrapper with button on a new line
+
+    // Append the wrapper to the tableContainer
+    tableContainer.appendChild(wrapper);
+}
+
+function addCourseRow(tbodyId, removeButtonId) {
+    const tbody = document.getElementById(tbodyId);
+    const row = document.createElement('tr');
+    row.innerHTML = `
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+    `;
+    tbody.appendChild(row);
+
+    // Enable the remove button
+    document.getElementById(removeButtonId).disabled = false;
+}
+
+function removeCourseRow(tbodyId, removeButtonId) {
+    const tbody = document.getElementById(tbodyId);
+    if (tbody.children.length > 1) {
+        tbody.removeChild(tbody.lastElementChild);
+    }
+    
+    // Disable the remove button if only one row is left
+    if (tbody.children.length === 1) {
+        document.getElementById(removeButtonId).disabled = true;
+    }
+}
+
+function removeTable(wrapperId) {
+    const wrapper = document.getElementById(wrapperId);
+    wrapper.parentNode.removeChild(wrapper);
+}
+
+function addTable() {
+            const tableContainer = document.getElementById('tableContainer');
+            const table = document.createElement('table');
+            table.innerHTML = `
+               <thead>
+                    <tr>
+                        <th>رقم المادة</th>
+                        <th>اسم المادة</th>
+                        <th>عدد الساعات المعتمدة</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><input type="text" placeholder=" رقم المادة"></td>
+                        <td><input type="text" placeholder=" اسم المادة"></td>
+                        <td><input type="text" placeholder=" عدد الساعات"></td>
+                    </tr>
+                    <tr>
+                        <td colspan="3">
+                            <strong>المتطلب السابق:</strong> 
+                            <input type="text" placeholder=" المتطلب السابق"  style="width: 200px;">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="3">
+                            <strong>الوصف:</strong>
+                            <textarea placeholder=" الوصف"></textarea>
+                        </td>
+                    </tr>
+                </tbody>
+            `;
+            tableContainer.appendChild(table);
+        }
+
+        function removeTable() {
+            const tableContainer = document.getElementById('tableContainer');
+            if (tableContainer.childElementCount > 0) {
+                tableContainer.removeChild(tableContainer.lastElementChild);
+            }
+        }
+		
+		
+    </script>
+	</body>
+</html>

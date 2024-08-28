@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تعديل خطة برنامج أكاديمي</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #fff;
+            color: #333;
+            direction: rtl;
+            margin: 0;
+            padding: 0;
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            background-color: #fefffe;
+            color: #000000;
+            border-bottom: 2px solid #218838;
+        }
+        .header img {
+            height: 55px;
+        }
+        .header h1 {
+            margin: 0;
+            font-size: 24px;
+            text-align: center;
+            flex: 1;
+        }
+        .container {
+            background: #fff;
+            padding: 30px;
+            margin: 20px auto;
+            border-radius: 10px;
+            max-width: 900px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border: 1px solid #ddd;
+        }
+        h1 {
+            text-align: center;
+            color: #218838;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        .form-group input, .form-group select, .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            box-sizing: border-box;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            outline: none;
+        }
+        .btn {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+        .btn:hover {
+            background-color: #218838;
+            transform: scale(1.05);
+        }
+        .signature-section {
+            margin-top: 20px;
+        }
+        .signature-group {
+            margin-bottom: 20px;
+        }
+        .dynamic-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        .dynamic-table th, .dynamic-table td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: center;
+        }
+        .dynamic-table th {
+            background-color: #28a745;
+            color: white;
+        }
+        .remove-row {
+            background-color: #f44336;
+            color: white;
+            border: none;
+            padding: 5px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+        .remove-row:hover {
+            background-color: #e53935;
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ6spCznoD6m9JRUhNKJ5RSBPZlQ_h2N4F9jw&s" alt="شعار الجامعة الأردنية">
+        <h1>تعديل خطة برنامج أكاديمي</h1>
+        <img src="https://sites.ju.edu.jo/ar/pqmc/PublishingImages/%D8%A7%D9%84%D8%A7%D8%B9%D8%AA%D9%85%D8%A7%D8%AF%20%D9%88%D8%B6%D9%85%D8%A7%D9%86%20%D8%A7%D9%84%D8%AC%D9%88%D8%AF%D8%A9.png" alt="شعار الاعتماد وضمان الجودة">
+    </div>
+    <div class="container">
+        <div class="form-group">
+            <label>اسم البرنامج</label>
+            <input type="text" name="programName" placeholder="اسم البرنامج">
+        </div>
+        <div class="form-group">
+            <label>رقم البرنامج</label>
+            <input type="text" name="programNumber" placeholder="رقم البرنامج">
+        </div>
+        <div class="form-group">
+            <label>اسم الجامعة</label>
+            <input type="text" name="universityName" placeholder="اسم الجامعة">
+        </div>
+        <div class="form-group">
+            <label>مستوى البرنامج</label>
+            <input type="text" name="programLevel" placeholder="مستوى البرنامج">
+        </div>
+        <div class="form-group">
+            <label>الدرجة العلمية للبرنامج</label>
+            <input type="text" name="degree" placeholder="الدرجة العلمية للبرنامج">
+        </div>
+        <div class="form-group">
+            <label>الكلية</label>
+            <input type="text" name="college" placeholder="الكلية">
+        </div>
+        <div class="form-group">
+            <label>القسم</label>
+            <input type="text" name="department" placeholder="القسم">
+        </div>
+        <div class="form-group">
+            <label>مدة البرنامج</label>
+            <input type="text" name="programDuration" placeholder="مدة البرنامج">
+        </div>
+        <div class="form-group">
+            <label>الساعات المعتمدة</label>
+            <input type="text" name="creditHours" placeholder="الساعات المعتمدة">
+        </div>
+        <div class="form-group">
+            <label>تاريخ استحداث البرنامج/ تاريخ آخر تعديل للخطة</label>
+            <input type="date" name="programHistory" placeholder="تاريخ استحداث البرنامج/ تاريخ آخر تعديل للخطة">
+        </div>
+        <div class="form-group">
+            <label>منسق البرنامج</label>
+            <input type="text" name="programCoordinator" placeholder="الاسم">
+            <label>التاريخ</label>
+            <input type="date" name="coordinatorDate">
+        </div>
+        <div class="form-group">
+            <label>معلومات الاتصال للمنسق</label>
+            <label>رقم الهاتف</label>
+            <input type="text" name="coordinatorPhone" placeholder="رقم الهاتف">
+            <label>وظيفة</label>
+            <input type="text" name="coordinatorJob" placeholder="وظيفة">
+            <label>معلومات الاتصال</label>
+            <textarea name="coordinatorContactInfo" placeholder="معلومات الاتصال"></textarea>
+        </div>
+        <div class="form-group">
+            <label>نوع المراجعة والتعديل</label>
+            <select name="reviewType">
+                <option value="substantial">تعديل جوهري</option>
+                <option value="minor">تعديل طفيف</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label>مبررات تعديل خطة البرنامج</label>
+            <textarea name="modificationJustification" placeholder="مبررات تعديل خطة البرنامج"></textarea>
+        </div>
+        <div class="form-group">
+            <label>علاقة تعديل خطة البرنامج بمتطلبات سوق العمل</label>
+            <textarea name="modificationRelationToJobMarket" placeholder="علاقة تعديل خطة البرنامج بمتطلبات سوق العمل"></textarea>
+        </div>
+        <div class="form-group">
+            <label>بيان علاقة هذا التعديل برسالة الجامعة وخطتها الإستراتيجية</label>
+            <textarea name="modificationRelationToUniversityMessage" placeholder="بيان علاقة هذا التعديل برسالة الجامعة وخطتها الإستراتيجية"></textarea>
+        </div>
+        <div class="form-group">
+            <label>نتاجات التعلّم المستهدفة</label>
+            <textarea name="learningOutcomesImpact" placeholder="إذا كان التعديل لخطة البرنامج جوهري، يرجى بيان كيفية تأثير هذا التغير على نتاجات التعلم المستهدفة"></textarea>
+        </div>
+        <div class="form-group">
+            <label>أعضاء الهيئة التدريسية</label>
+            <textarea name="facultyMembersImpact" placeholder="يرجى تحديد إن كان هذا التعديل في خطة البرنامج يتطلب عدد إضافي من أعضاء الهيئة التدريسية الجدد لتدريس المساقات الجديدة. إذا لم يكن هناك حاجة لتعيين أعضاء هيئة تدريسية جدد، والتعديل على خطة البرنامج يتطلب إضافة مواد دراسية جديدة، يرجى بيان قدرة أعضاء هيئة التدريس الحاليين على تلبية هذا التعديل"></textarea>
+        </div>
+        <div class="form-group">
+            <label>المرافق والمعدات</label>
+            <label>هل التعديل على خطة البرنامج يتطلب مرافق ومعدات إضافية، ومساحات وخدمات مكتبية أخرى؟</label>
+            <select name="facilitiesRequirements" id="facilitiesRequirements">
+                <option value="no">لا</option>
+                <option value="yes">نعم</option>
+            </select>
+            <div id="facilitiesDetails" style="display: none;">
+                <label>يرجى تحديد الاحتياجات في كل مجال:</label>
+                <textarea name="facilitiesNeeds" placeholder="حدد الاحتياجات"></textarea>
+            </div>
+        </div>
+        <div class="form-group">
+            <label>تأثير التعديل على البرامج الأخرى في الجامعة</label>
+            <label>هل ستتأثر البرامج الأخرى بهذا التعديل؟</label>
+            <select name="impactOnOtherPrograms" id="impactOnOtherPrograms">
+                <option value="no">لا</option>
+                <option value="yes">نعم</option>
+            </select>
+            <div id="impactedPrograms" style="display: none;">
+                <label>يرجى تحديد البرامج المتأثرة:</label>
+                <textarea name="impactedProgramsList" placeholder="حدد البرامج المتأثرة"></textarea>
+            </div>
+        </div>
+        <div class="form-group">
+            <label>هل مطلوب من الطلبة الحاليين الانتقال إلى الخطة الجديدة؟</label>
+            <select name="studentTransition" id="studentTransition">
+                <option value="no">لا</option>
+                <option value="yes">نعم</option>
+            </select>
+            <div id="transitionPlan" style="display: none;">
+                <label>ما هي الخطة الإجرائية لإعلام الطلبة بهذا التعديل، والخطة الانتقالية لتحويل الطلبة إلى البرنامج الجديد؟</label>
+                <textarea name="transitionPlanDetails" placeholder="حدد الخطة الإجرائية"></textarea>
+            </div>
+        </div>
+        <div class="form-group">
+            <label>المواد الدراسية الجديدة والمعدلة</label>
+            <table class="dynamic-table" id="coursesTable">
+                <thead>
+                    <tr>
+                        <th>اسم المادة</th>
+                        <th>مادة إجبارية/اختيارية</th>
+                        <th>طبيعة التعديل</th>
+                        <th><button type="button" id="addRow" class="btn">إضافة مادة</button></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><input type="text" name="courseName[]" placeholder="اسم المادة"></td>
+                        <td>
+                            <select name="courseType[]">
+                                <option value="mandatory">إجبارية</option>
+                                <option value="elective">اختيارية</option>
+                            </select>
+                        </td>
+                        <td>
+                            <select name="courseModificationType[]">
+                                <option value="add">إضافة مادة</option>
+                                <option value="remove">إلغاء مادة</option>
+                                <option value="modifyName">تعديل مسمى</option>
+                                <option value="modifyContent">تعديل محتوى</option>
+                            </select>
+                        </td>
+                        <td><button type="button" class="remove-row">حذف</button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="form-group">
+            <label>ملحقات مطلوبة</label>
+            <div>
+                <input type="checkbox" name="attachments[]" value="نموذج محدد">
+                <label>نموذج محدد</label>
+            </div>
+            <div>
+                <input type="checkbox" name="attachments[]" value="مخططات للمواد الدراسية الجديدة">
+                <label>مخططات للمواد الدراسية الجديدة</label>
+            </div>
+            <div>
+                <input type="checkbox" name="attachments[]" value="الخطة الدراسية المحددة">
+                <label>الخطة الدراسية المحددة</label>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="signature-section">
+                <div class="signature-group">
+                    <label>اسم منسق البرنامج</label>
+                    <input type="text" name="programCoordinator" placeholder="الاسم">
+                    <label>التاريخ</label>
+                    <input type="date" name="coordinatorDate">
+                </div>
+                <div class="signature-group">
+                    <label>مقرر لجنة الخطة/القسم</label>
+                    <input type="text" name="planCommitteeHead" placeholder="الاسم">
+                </div>
+                <div class="signature-group">
+                    <label>رئيس القسم</label>
+                    <input type="text" name="departmentHead" placeholder="الاسم">
+                </div>
+                <div class="signature-group">
+                    <label>العميد</label>
+                    <input type="text" name="dean" placeholder="الاسم">
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <button type="submit" class="btn">حفظ البيانات</button>
+        </div>
+    </div>
+    <script>
+        document.getElementById('facilitiesRequirements').addEventListener('change', function() {
+            document.getElementById('facilitiesDetails').style.display = this.value === 'yes' ? 'block' : 'none';
+        });
+        document.getElementById('impactOnOtherPrograms').addEventListener('change', function() {
+            document.getElementById('impactedPrograms').style.display = this.value === 'yes' ? 'block' : 'none';
+        });
+        document.getElementById('studentTransition').addEventListener('change', function() {
+            document.getElementById('transitionPlan').style.display = this.value === 'yes' ? 'block' : 'none';
+        });
+        document.getElementById('addRow').addEventListener('click', function() {
+            const table = document.getElementById('coursesTable').getElementsByTagName('tbody')[0];
+            const newRow = table.insertRow();
+            newRow.innerHTML = `
+                <td><input type="text" name="courseName[]" placeholder="اسم المادة"></td>
+                <td>
+                    <select name="courseType[]">
+                        <option value="mandatory">إجبارية</option>
+                        <option value="elective">اختيارية</option>
+                    </select>
+                </td>
+                <td>
+                    <select name="courseModificationType[]">
+                        <option value="add">إضافة مادة</option>
+                        <option value="remove">إلغاء مادة</option>
+                        <option value="modifyName">تعديل مسمى</option>
+                        <option value="modifyContent">تعديل محتوى</option>
+                    </select>
+                </td>
+                <td><button type="button" class="remove-row">حذف</button></td>
+            `;
+        });
+        document.getElementById('coursesTable').addEventListener('click', function(event) {
+            if (event.target.classList.contains('remove-row')) {
+                event.target.closest('tr').remove();
+            }
+        });
+    </script>
+</body>
+</html>

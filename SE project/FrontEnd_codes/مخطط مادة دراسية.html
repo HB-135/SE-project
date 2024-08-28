@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>النموذج</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #fff;
+            color: #333;
+            direction: rtl;
+            margin: 0;
+            padding: 0;
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            background-color: #fefffe;
+            color: #000000;
+            border-bottom: 2px solid #218838;
+        }
+        .header img {
+            height: 70px; /* ارتفاع الصورة لتكون متناسقة */
+        }
+        .header h1 {
+            margin: 0 20px;
+            font-size: 24px;
+            text-align: center;
+            flex: 1;
+        }
+        .content {
+            margin: 20px auto;
+            padding: 30px;
+            background-color: #fff;
+            border-radius: 10px;
+            width: 90%;
+            max-width: 900px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border: 1px solid #ddd;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background-color: #f9f9f9;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: center;
+        }
+        th {
+            background-color: #28a745;
+            color: #fff;
+        }
+        td input, td textarea, td select {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            outline: none;
+            text-align: right;
+        }
+        td input[type="checkbox"] {
+            width: auto;
+            margin-left: 10px;
+        }
+        .number-cell {
+            width: 5%;
+            background-color: #28a745;
+            color: #fff;
+            font-weight: bold;
+        }
+        .table-content {
+            margin-top: 20px;
+        }
+        .save-button {
+            background-color: #28a745;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            display: block;
+            margin: 20px auto;
+            width: 150px;
+        }
+        .save-button:hover {
+            background-color: #218838;
+            transform: scale(1.05);
+        }
+        td input[type="date"] {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>الجامعة الأردنية</h1>
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSkNF4E1jUzti1Cp_c_j9Z1dRNFR6jlG38eQg&s" alt="شعار">
+        <h1>The University of Jordan</h1>
+    </div>
+    <div class="content">
+        <table>
+            <tr>
+                <td>رقم النموذج</td>
+                <td>EXC-01-02-02B</td>
+            </tr>
+            <tr>
+                <td>رقم وتاريخ الإصدار</td>
+                <td>2/3/24/2022/2963<br>05/12/2022</td>
+            </tr>
+            <tr>
+                <td>رقم وتاريخ المراجعة أو التعديل</td>
+                <td><input type="text"> <input type="date" name="coordinatorDate"></td>
+            </tr>
+            <tr>
+                <td>رقم قرار اعتماد مجلس العمداء</td>
+                <td>2/3/24/2023</td>
+            </tr>
+            <tr>
+                <td>تاريخ قرار اعتماد مجلس العمداء</td>
+                <td>23/01/2023</td>
+            </tr>
+            <tr>
+                <td>عدد الصفحات</td>
+                <td>06</td>
+            </tr>
+        </table>
+
+        <div class="table-content">
+            <table>
+                <tr>
+                    <td class="number-cell">1</td>
+                    <th>اسم المادة</th>
+                    <td><input type="text"></td>
+                </tr>
+                <tr>
+                    <td class="number-cell">2</td>
+                    <th>رقم المادة</th>
+                    <td><input type="text"></td>
+                </tr>
+                <tr>
+                    <td class="number-cell">3</td>
+                    <th>الساعات المعتمدة (نظرية، عملية)</th>
+                    <td><input type="text"></td>
+                </tr>
+                <tr>
+                    <td class="number-cell">4</td>
+                    <th>الساعات الفعلية (نظرية، عملية)</th>
+                    <td><input type="text"></td>
+                </tr>
+                <tr>
+                    <td class="number-cell">5</td>
+                    <th>المتطلبات السابقة/ المتطلبات المتزامنة</th>
+                    <td><input type="text"></td>
+                </tr>
+                <tr>
+                    <td class="number-cell">6</td>
+                    <th>اسم البرنامج</th>
+                    <td><input type="text"></td>
+                </tr>
+                <tr>
+                    <td class="number-cell">7</td>
+                    <th>رقم البرنامج</th>
+                    <td><input type="text"></td>
+                </tr>
+                <tr>
+                    <td class="number-cell">8</td>
+                    <th>الكلية/ المركز</th>
+                    <td><input type="text"></td>
+                </tr>
+                <tr>
+                    <td class="number-cell">9</td>
+                    <th>القسم الأكاديمي</th>
+                    <td><input type="text"></td>
+                </tr>
+                <tr>
+                    <td class="number-cell">10</td>
+                    <th>مستوى المادة</th>
+                    <td><input type="text"></td>
+                </tr>
+                <tr>
+                    <td class="number-cell">11</td>
+                    <th>العام الجامعي/ الفصل الدراسي</th>
+                    <td><input type="text"></td>
+                </tr>
+                <tr>
+                    <td class="number-cell">12</td>
+                    <th>الدرجة العلمية للبرنامج</th>
+                    <td><input type="text"></td>
+                </tr>
+                <tr>
+                    <td class="number-cell">13</td>
+                    <th>الأقسام الأخرى المشاركة في تعليم المادة</th>
+                    <td><input type="text"></td>
+                </tr>
+                <tr>
+                    <td class="number-cell">14</td>
+                    <th>لغة التعلم</th>
+                    <td><input type="text"></td>
+                </tr>
+                <tr>
+                    <td class="number-cell">15</td>
+                    <th>نوع التعلم</th>
+                    <td>وجاهي<input type="checkbox"> مدمج<input type="checkbox"> إلكتروني كامل عن بعد<input type="checkbox"></td>
+                </tr>
+                <tr>
+                    <td class="number-cell">16</td>
+                    <th>المنصة الإلكترونية</th>
+                    <td>Moodle<input type="checkbox"> Microsoft Team<input type="checkbox"></td>
+                </tr>
+                <tr>
+                    <td class="number-cell">17</td>
+                    <th>تاريخ استحداث مخطط المادة الدراسية</th>
+                    <td><input type="date" name="coordinatorDate"></td>
+                </tr>
+                <tr>
+                    <td class="number-cell">18</td>
+                    <th>تاريخ مراجعة مخطط المادة الدراسية</th>
+                    <td><input type="date" name="coordinatorDate"></td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="content-footer">
+            <button class="save-button">حفظ البيانات</button>
+        </div>
+    </div>
+</body>
+</html>

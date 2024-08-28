@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>درجة الماجستير</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #fff;
+            color: #333;
+            direction: rtl;
+            margin: 0;
+            padding: 0;
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            background-color: #fefffe;
+            color: #000000;
+            border-bottom: 2px solid #218838;
+        }
+        .header img {
+            height: 50px;
+        }
+        .header h1 {
+            margin: 0;
+            font-size: 24px;
+            text-align: center;
+            flex: 1;
+        }
+        .content {
+            margin: 20px auto;
+            padding: 30px;
+            background-color: #fff;
+            border-radius: 10px;
+            width: 90%;
+            max-width: 900px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border: 1px solid #ddd;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background-color: #f9f9f9;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        th {
+            background-color: #28a745;
+            color: #fff;
+            padding: 10px;
+        }
+        td {
+            padding: 10px;
+            text-align: center;
+        }
+        td input, td select {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            outline: none;
+        }
+        td label {
+            float: right;
+            margin-left: 10px;
+        }
+        .save-button, .add-plan-button, .remove-plan-button, .add-course-button, .remove-course-button, .add-elective-button, .remove-elective-button {
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 10px 0;
+            transition: background-color 0.3s ease, opacity 0.3s ease;
+        }
+        .save-button {
+            background-color: #28a745;
+        }
+        .save-button:hover {
+            background-color: #218838;
+        }
+        .add-plan-button, .add-course-button, .add-elective-button {
+            background-color: #218838;
+        }
+        .add-plan-button:hover, .add-course-button:hover, .add-elective-button:hover {
+            background-color: #1e7e34;
+        }
+        .remove-plan-button, .remove-course-button, .remove-elective-button {
+            background-color: #dc3545;
+        }
+        .remove-plan-button:hover, .remove-course-button:hover, .remove-elective-button:hover {
+            background-color: #c82333;
+        }
+        .remove-plan-button.hidden, .remove-course-button.hidden, .remove-elective-button.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+        .content-footer {
+            text-align: center;
+            margin: 20px 0;
+        }
+        .section {
+            margin: 20px 0;
+        }
+        .section-title {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .priority-input {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        .priority-input label {
+            margin-right: 10px;
+            white-space: nowrap;
+        }
+        .priority-input input {
+            flex: 1;
+        }
+        .priority-input span {
+            margin-left: 10px;
+            white-space: nowrap;
+        }
+        textarea {
+            width: 100%;
+            height: 100px;
+            border-radius: 4px;
+            border: 1px solid #ddd;
+            padding: 10px;
+            box-sizing: border-box;
+            outline: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSkNF4E1jUzti1Cp_c_j9Z1dRNFR6jlG38eQg&s" alt="شعار اليمين">
+        <h1>الخطة الدراسية - درجة الماجستير</h1>
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTFo_HeSG4_NSbpNTHz-R758fp1eZkEU-67UQ&sc_j9Z1dRNFR6jlG38eQg&s" alt="شعار اليسار">
+    </div>
+    <div class="content">
+        <div class="content-header"></div>
+        <table>
+            <thead>
+                <tr>
+                    <th>رقم</th>
+                    <th>الاسم</th>
+                    <th>ملاحظات</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>الكلية</td>
+                    <td><select id="college">
+                        <option value="كلية الهندسة">كلية الهندسة</option>
+                        <option value="كلية العلوم">كلية العلوم</option>
+                        <option value="كلية الطب">كلية الطب</option>
+                        <!-- أضف المزيد من الكليات هنا --></td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>القسم</td>
+                    <td><select id="department">
+                        <option value="قسم الكهرباء">قسم الكهرباء</option>
+                        <option value="قسم الكيمياء">قسم الكيمياء</option>
+                        <option value="قسم الطب">قسم الطب</option>
+                        <!-- أضف المزيد من الأقسام هنا -->
+                    </select></td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>اسم الدرجة العلمية (بالعربية)</td>
+                    <td><input type="text"></td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>اسم الدرجة العلمية (بالإنجليزية)</td>
+                    <td><input type="text"></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>رقم </th>
+                    <th>رقم التخصص</th>
+                    <th>الدرجة</th>
+                    <th>رقم القسم</th>
+                    <th>رقم الكلية</th>
+                    <th>السنة</th>
+                    <th>رسالة/شامل</th>
+                </tr>
+            </thead>
+            <tbody id="plan-table-body">
+                <tr>
+                    <th>رقم الخطة</th>
+                    <td><input type="text"></td>
+                    <td><input type="text"></td>
+                    <td><input type="text"></td>
+                    <td><input type="text"></td>
+                    <td><input type="text"></td>
+                    <td><input type="text"></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="section">
+            <div class="section-title">أحكام وشروط عامة:</div>
+            <div>1. تتفق الخطة مع تعليمات برامج الدراسات العليا النافذة.</div>
+            <div class="priority-input">
+                <label>التخصصات التي يمكن قبولها:</label>
+            </div>
+            <div class="priority-input">
+                <label>الأولوية الأولى:</label>
+                <span>بكالوريوس</span>
+                <input type="text">
+                <span>بكالوريوس</span>
+                <input type="text">
+            </div>
+            <div class="priority-input">
+                <label>الأولوية الثانية:</label>
+                <span>بكالوريوس</span>
+                <input type="text">
+                <span>بكالوريوس</span>
+                <input type="text">
+            </div>
+        </div>
+
+        <div class="section">
+            <div>تتكون مواد هذه الخطة من ( <input type="text" style="width: 60px; text-align: center;"> ) موزعة كما يلي:</div>
+            <div>1. مواد إجبارية ( <input type="text" style="width: 40px;"> ) ساعة معتمدة كما يلي:</div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>رقم المادة</th>
+                        <th>اسم المادة</th>
+                        <th>الساعات المعتمدة</th>
+                        <th>نظري</th>
+                        <th>عملي</th>
+                        <th>المتطلب السابق</th>
+                    </tr>
+                </thead>
+                <tbody id="course-table-body">
+                    <tr>
+                        <td><input type="text"></td>
+                        <td><input type="text"></td>
+                        <td><input type="text"></td>
+                        <td><input type="text"></td>
+                        <td><input type="text"></td>
+                        <td><input type="text"></td>
+                    </tr>
+                </tbody>
+            </table>
+            <button class="add-course-button" onclick="addCourseRow()">إضافة مادة</button>
+            <button class="remove-course-button" id="remove-course-button" onclick="removeCourseRow()">حذف مادة</button>
+        </div>
+
+        <div class="section">
+            <div>2. مواد اختيارية ( <input type="text" style="width: 40px;"> ) ساعة معتمدة يتم اختيارها مما يلي:</div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>رقم المادة</th>
+                        <th>اسم المادة</th>
+                        <th>الساعات المعتمدة</th>
+                        <th>نظري</th>
+                        <th>عملي</th>
+                        <th>المتطلب السابق</th>
+                    </tr>
+                </thead>
+                <tbody id="elective-table-body">
+                    <tr>
+                        <td><input type="text"></td>
+                        <td><input type="text"></td>
+                        <td><input type="text"></td>
+                        <td><input type="text"></td>
+                        <td><input type="text"></td>
+                        <td><input type="text"></td>
+                    </tr>
+                </tbody>
+            </table>
+            <button class="add-elective-button" onclick="addElectiveRow()">إضافة مادة اختيارية</button>
+            <button class="remove-elective-button" id="remove-elective-button" onclick="removeElectiveRow()">حذف مادة اختيارية</button>
+        </div>
+
+        <div class="section">
+            <div>3. النجاح في امتحان الكفاءة المعرفية ورقمها (<input type="text" style="width: 50px;">).</div>
+            <div>4. رسالة جامعية (<input type="text" style="width: 50px;">) ساعة معتمدة ورقمها (<input type="text" style="width: 50px;">)</div>
+        </div>
+        <div class="section">
+            <div>ملاحظات إن وجدت :</div>
+            <textarea id="notes" name="notes" placeholder="أدخل ملاحظاتك هنا..."></textarea>
+        </div>
+
+        <div class="content-footer">
+            <button class="save-button">حفظ</button>
+        </div>
+    </div>
+
+    <script>
+        function addPlanRow() {
+            var tableBody = document.getElementById('plan-table-body');
+            var newRow = document.createElement('tr');
+            newRow.innerHTML = '<td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td>';
+            tableBody.appendChild(newRow);
+            document.getElementById('remove-plan-button').classList.remove('hidden');
+        }
+
+        function removePlanRow() {
+            var tableBody = document.getElementById('plan-table-body');
+            if (tableBody.rows.length > 1) {
+                tableBody.deleteRow(-1);
+            }
+            if (tableBody.rows.length === 1) {
+                document.getElementById('remove-plan-button').classList.add('hidden');
+            }
+        }
+
+        function addCourseRow() {
+            var tableBody = document.getElementById('course-table-body');
+            var newRow = document.createElement('tr');
+            newRow.innerHTML = '<td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td>';
+            tableBody.appendChild(newRow);
+            document.getElementById('remove-course-button').classList.remove('hidden');
+        }
+
+        function removeCourseRow() {
+            var tableBody = document.getElementById('course-table-body');
+            if (tableBody.rows.length > 1) {
+                tableBody.deleteRow(-1);
+            }
+            if (tableBody.rows.length === 1) {
+                document.getElementById('remove-course-button').classList.add('hidden');
+            }
+        }
+
+        function addElectiveRow() {
+            var tableBody = document.getElementById('elective-table-body');
+            var newRow = document.createElement('tr');
+            newRow.innerHTML = '<td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td>';
+            tableBody.appendChild(newRow);
+            document.getElementById('remove-elective-button').classList.remove('hidden');
+        }
+
+        function removeElectiveRow() {
+            var tableBody = document.getElementById('elective-table-body');
+            if (tableBody.rows.length > 1) {
+                tableBody.deleteRow(-1);
+            }
+            if (tableBody.rows.length === 1) {
+                document.getElementById('remove-elective-button').classList.add('hidden');
+            }
+        }
+    </script>
+</body>
+</html>

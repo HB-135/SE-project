@@ -1,0 +1,508 @@
+
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>نظام استحداث الخطط الدراسية</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Cairo', sans-serif;
+            background-color: #f0f2f5;
+            margin: 0;
+            padding: 0;
+            direction: rtl;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            justify-content: space-between;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            background-color: #1e8449;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+
+        .header h2 {
+            margin: 0;
+            font-size: 24px;
+            color: #ffffff;
+        }
+
+        .menu-icon {
+            display: inline-block;
+            cursor: pointer;
+            padding: 10px;
+        }
+
+        .menu-icon div {
+            width: 30px;
+            height: 3px;
+            background-color: #ffffff;
+            margin: 6px 0;
+            transition: 0.4s;
+        }
+
+        .menu-icon:hover div {
+            background-color: #27ae60;
+        }
+
+        .dropdown {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            display: none;
+            background-color: rgba(255, 255, 255, 0.95);
+            min-width: 200px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .dropdown a {
+            color: #2c3e50;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+
+        .dropdown a:hover {
+            background-color: #ecf0f1;
+            border-radius: 8px;
+        }
+
+        .dropdown .sub-menu {
+            position: relative;
+        }
+
+        .dropdown .sub-menu-content {
+            display: none;
+            position: absolute;
+            right: 100%;
+            top: 0;
+            background-color: rgba(255, 255, 255, 0.95);
+            min-width: 180px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            border-radius: 8px;
+        }
+
+        .dropdown .sub-menu:hover .sub-menu-content {
+            display: block;
+        }
+
+        .main-content {
+            text-align: center;
+            margin: 60px 20px;
+            color: #2c3e50;
+            flex-grow: 1;
+        }
+
+        .main-content h1 {
+            font-size: 42px;
+            margin-bottom: 30px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .plans {
+            display: block;
+            text-align: left;
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .plan-item {
+            background-color: white;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .plan-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .plan-item h2 {
+            font-size: 28px;
+            color: #27ae60;
+            margin: 0;
+            flex: 1;
+            text-align: right;
+        }
+
+        .ui-button {
+            background-color: #27ae60;
+            color: #fff;
+            border: none;
+            padding: 12px 25px;
+            cursor: pointer;
+            border-radius: 25px;
+            font-size: 18px;
+            font-weight: bold;
+            text-transform: uppercase;
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+            flex-shrink: 0;
+        }
+
+        .ui-button i {
+            margin-left: 8px;
+        }
+
+        .ui-button:hover {
+            background-color: #1e8449;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.25);
+        }
+
+        .ui-button:focus {
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(39, 174, 96, 0.5);
+        }
+
+        .footer {
+            background-color: #1e8449;
+            padding: 20px;
+            text-align: center;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .logout-button {
+            background-color: #e74c3c;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            cursor: pointer;
+            border-radius: 30px;
+            font-size: 18px;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: auto;
+        }
+
+        .logout-button:hover {
+            background-color: #c0392b;
+            transform: scale(1.05);
+        }
+
+        .logout-button:focus {
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(231, 76, 60, 0.5);
+        }
+
+        /* Modal styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.4);
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 10% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 600px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .modal-fullscreen {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            max-width: none;
+        }
+
+        .close, .expand {
+            color: #aaa;
+            font-size: 24px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-right: 10px;
+        }
+
+        .close:hover, .expand:hover {
+            color: black;
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 10px;
+        }
+
+        .modal-title {
+            font-size: 20px;
+            font-weight: bold;
+            flex-grow: 1;
+            text-align: center;
+            color: #2c3e50;
+        }
+
+        .modal-table {
+            width: 100%;
+            margin-top: 20px;
+            border-collapse: collapse;
+            text-align: right;
+        }
+
+        .modal-table th, .modal-table td {
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .modal-table th {
+            background-color: #ecf0f1;
+            color: #2c3e50;
+            font-weight: bold;
+        }
+
+        .modal-table td {
+            color: #555;
+        }
+
+        .modal-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        /* Media Query for Responsive Design */
+        @media (max-width: 768px) {
+            .header h2 {
+                font-size: 20px;
+            }
+
+            .menu-icon div {
+                width: 25px;
+            }
+
+            .main-content h1 {
+                font-size: 36px;
+            }
+
+            .logout-button {
+                width: 100%;
+                text-align: center;
+                margin-top: 10px;
+            }
+
+            .footer {
+                justify-content: center;
+            }
+
+            .plan-item {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .plan-item h2 {
+                margin-bottom: 15px;
+            }
+
+            .ui-button {
+                margin-left: 0;
+                margin-top: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <div class="menu-icon" onclick="toggleMenu()">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <h2>نظام إدارة الخطط الدراسية</h2>
+        <div class="dropdown" id="dropdownMenu">
+            <div class="sub-menu">
+                <a href="#">دبلوم</a>
+                <div class="sub-menu-content">
+                    <a href="#">تعديل خطة دراسية</a>
+                    <a href="#">حذف خطة دراسية</a>
+                    <a href="#">إضافة خطة دراسية</a>
+                </div>
+            </div>
+            <div class="sub-menu">
+                <a href="#">بكالوريوس</a>
+                <div class="sub-menu-content">
+                    <a href="#">تعديل خطة دراسية</a>
+                    <a href="#">حذف خطة دراسية</a>
+                    <a href="#">إضافة خطة دراسية</a>
+                </div>
+            </div>
+            <div class="sub-menu">
+                <a href="#">ماجستير</a>
+                <div class="sub-menu-content">
+                    <a href="#">تعديل خطة دراسية</a>
+                    <a href="#">حذف خطة دراسية</a>
+                    <a href="#">إضافة خطة دراسية</a>
+                </div>
+            </div>
+            <div class="sub-menu">
+                <a href="#">دكتوراة</a>
+                <div class="sub-menu-content">
+                    <a href="#">تعديل خطة دراسية</a>
+                    <a href="#">حذف خطة دراسية</a>
+                    <a href="#">إضافة خطة دراسية</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="main-content">
+       
+        <div class="plans">
+            <div class="plan-item">
+                <h2>عرض حالة الطلب</h2>
+                <button class="ui-button" title="استعراض" type="button" onclick="openRequestStatusModal()">
+                    <i class="fas fa-eye"></i> عرض
+                </button>
+            </div>
+            <div class="plan-item">
+                <h2>عرض التعليقات</h2>
+                <button class="ui-button" title="استعراض" type="button" onclick="openCommentsModal()">
+                    <i class="fas fa-eye"></i> عرض
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <button class="logout-button" onclick="logout()">تسجيل الخروج</button>
+    </div>
+
+    <!-- Modal Structure for Request Status -->
+    <div id="requestStatusModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span class="close" onclick="closeModal('requestStatusModal')">&times;</span>
+                <i class="fas fa-expand expand" onclick="toggleFullscreen('requestStatusModal')"></i>
+                <span class="modal-title">حالة الطلب</span>
+            </div>
+            <table class="modal-table">
+                <thead>
+                    <tr>
+                        <th>مكان الطلب</th>
+                        <th>حالة الطلب</th>
+                    </tr>
+                </thead>
+                <tbody id="requestStatusBody">
+                    <!-- Sample Data -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Modal Structure for Comments -->
+    <div id="commentsModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span class="close" onclick="closeModal('commentsModal')">&times;</span>
+                <i class="fas fa-expand expand" onclick="toggleFullscreen('commentsModal')"></i>
+                <span class="modal-title">التعليقات</span>
+            </div>
+            <table class="modal-table">
+                <thead>
+                    <tr>
+                        <th>الأسم</th>
+                        <th>الملاحظات</th>
+                    </tr>
+                </thead>
+                <tbody id="commentsBody">
+                    <!-- Sample Data -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script>
+        function toggleMenu() {
+            const dropdown = document.getElementById("dropdownMenu");
+            dropdown.style.display = dropdown.style.display === "block" ? "none" : "block";
+        }
+
+        function openRequestStatusModal() {
+            openModal('requestStatusModal');
+        }
+
+        function openCommentsModal() {
+            openModal('commentsModal');
+        }
+
+        function openModal(modalId) {
+            const modal = document.getElementById(modalId);
+            modal.style.display = "block";
+        }
+
+        function closeModal(modalId) {
+            const modal = document.getElementById(modalId);
+            modal.style.display = "none";
+        }
+
+        function toggleFullscreen(modalId) {
+            const modalContent = document.getElementById(modalId).querySelector('.modal-content');
+            modalContent.classList.toggle('modal-fullscreen');
+        }
+
+        function logout() {
+            alert('تم تسجيل الخروج بنجاح');
+            // هنا يمكن إضافة عملية تسجيل الخروج الحقيقية مثل إعادة توجيه المستخدم لصفحة تسجيل الدخول
+        }
+
+        // إغلاق القائمة إذا نقر المستخدم خارجها
+        window.onclick = function(event) {
+            if (!event.target.matches('.menu-icon, .menu-icon div')) {
+                const dropdown = document.getElementById("dropdownMenu");
+                if (dropdown.style.display === "block") {
+                    dropdown.style.display = "none";
+                }
+            }
+
+            // إغلاق المودال إذا نقر المستخدم خارجه
+            if (event.target.classList.contains('modal')) {
+                closeModal(event.target.id);
+            }
+        }
+    </script>
+
+</body>
+</html>

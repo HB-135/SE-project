@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الخطة الدراسية - دبلوم مهني</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #fff;
+            color: #333;
+            direction: rtl;
+            margin: 0;
+            padding: 0;
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            background-color: #fefffe;
+            color: #000000;
+            border-bottom: 2px solid #218838;
+        }
+        .header img {
+            height: 50px;
+        }
+        .header h1 {
+            margin: 0;
+            font-size: 24px;
+            text-align: center;
+            flex: 1;
+        }
+        .content {
+            margin: 20px auto;
+            padding: 30px;
+            background-color: #fff;
+            border-radius: 10px;
+            width: 90%;
+            max-width: 900px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border: 1px solid #ddd;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background-color: #f9f9f9;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        th {
+            background-color: #28a745;
+            color: #fff;
+            padding: 10px;
+        }
+        td {
+            padding: 10px;
+            text-align: center;
+        }
+        td input {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            outline: none;
+            text-align: right;
+        }
+        .add-symbol-button, .remove-symbol-button, .add-priority-button, .remove-priority-button, .save-button {
+            background-color: #28a745;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 10px 0;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+        .add-symbol-button:hover, .remove-symbol-button:hover, .add-priority-button:hover, .remove-priority-button:hover, .save-button:hover {
+            background-color: #218838;
+            transform: scale(1.05);
+        }
+        .right-align {
+            text-align: right;
+            width: 100%;
+        }
+        .content-header {
+            text-align: right;
+            width: 100%;
+        }
+        .terms-and-conditions {
+            width: 100%;
+            margin: 20px 0;
+            padding: 20px;
+            background-color: transparent;
+            border: none;
+            text-align: right;
+        }
+        .terms-and-conditions p {
+            margin: 10px 0;
+        }
+        .curriculum {
+            width: 100%;
+            margin: 20px 0;
+            padding: 20px;
+            background-color: transparent;
+            border: none;
+            text-align: right;
+        }
+        .curriculum table {
+            width: 100%;
+        }
+        .curriculum th, .curriculum td {
+            text-align: center;
+        }
+        .curriculum .hours-header {
+            background-color: #f0f0f0;
+            text-align: center;
+        }
+        .priority-section {
+            margin: 20px 0;
+        }
+        .priority-section div {
+            margin-bottom: 10px;
+        }
+        .priority-section input {
+            width: calc(100% - 120px);
+            display: inline-block;
+            margin-right: 10px;
+        }
+        .priority-section button {
+            display: inline-block;
+        }
+        .priority-section button.remove-priority-button {
+            margin-left: 10px;
+        }
+        .content-footer {
+            text-align: center;
+            margin: 20px 0;
+        }
+        .save-button {
+            font-size: 18px;
+            width: 150px;
+            margin: 0 auto;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSkNF4E1jUzti1Cp_c_j9Z1dRNFR6jlG38eQg&s" alt="شعار اليمين">
+        <h1>الخطة الدراسية - دبلوم مهني</h1>
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTFo_HeSG4_NSbpNTHz-R758fp1eZkEU-67UQ&sc_j9Z1dRNFR6jlG38eQg&s" alt="شعار اليسار">
+    </div>
+    <div class="content">
+        <div class="content-header"></div>
+        <table>
+            <thead>
+                <tr>
+                    <th>رقم</th>
+                    <th>الاسم</th>
+                    <th>ملاحظات</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>الكلية المعنية بمنح شهادة الدبلوم المهني</td>
+                    <td><input type="text"></td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>القسم المختص بمنح شهادة الدبلوم المهني</td>
+                    <td><input type="text"></td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>اسم شهادة الدبلوم المهني (بالعربية)</td>
+                    <td><input type="text"></td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>اسم شهادة الدبلوم المهني (بالإنجليزية)</td>
+                    <td><input type="text"></td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <div class="content-header">
+            <h2>نظام الترميز:</h2>
+        </div>
+        <p class="right-align"> رموز الأقسام:</p>
+        <table id="codes-table">
+            <thead>
+                <tr>
+                    <th>الرمز</th>
+                    <th>القسم</th>
+                    <th>الإجراءات</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><input type="text"></td>
+                    <td><input type="text"></td>
+                    <td><button class="remove-symbol-button" onclick="removeRow(this)">حذف رمز</button></td>
+                </tr>
+            </tbody>
+        </table>
+        <button class="add-symbol-button" onclick="addRow()">إضافة رمز</button>
+        
+        <div class="terms-and-conditions">
+            <h2>أحكام وشروط عامة:</h2>
+            <p>1. التخصصات التي يمكن قبولها:</p>
+            <div class="priority-section" id="priority-section">
+                <div>
+                    <p>الأولوية الأولى:</p>
+                    <input type="text">
+                </div>
+                <div>
+                    <p>الأولوية الثانية:</p>
+                    <input type="text">
+                </div>
+                <!-- First two priorities -->
+            </div>
+            <button class="add-priority-button" onclick="addPriority()">إضافة أولوية</button>
+        </div>
+
+        <div class="curriculum">
+            <h2>مكونات الخطة:</h2>
+            <p>تتكون الخطة الدراسية لشهادة الدبلوم المهني من 24 ساعة معتمدة موزعة على النحو التالي:</p>
+            <table>
+                <thead>
+                    <tr>
+                        <th rowspan="2">  رقم المادة </th>
+                        <th rowspan="2">  اسم المادة </th>
+                        <th colspan="3" class="hours-header">الساعات المعتمدة</th>
+                    </tr>
+                    <tr>
+                        <th>نظري</th>
+                        <th>عملي</th>
+                        <th>المجموع</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><input type="text"></td>
+                        <td><input type="text"></td>
+                        <td><input type="text"></td>
+                        <td><input type="text"></td>
+                        <td><input type="text"></td>
+                    </tr>
+                    <tr>
+                        <td><input type="text"></td>
+                        <td><input type="text"></td>
+                        <td><input type="text"></td>
+                        <td><input type="text"></td>
+                        <td><input type="text"></td>
+                    </tr>
+                    <tr>
+                        <td><input type="text"></td>
+                        <td><input type="text"></td>
+                        <td><input type="text"></td>
+                        <td><input type="text"></td>
+                        <td><input type="text"></td>
+                    </tr>
+                    <tr>
+                        <td><input type="text"></td>
+                        <td><input type="text"></td>
+                        <td><input type="text"></td>
+                        <td><input type="text"></td>
+                        <td><input type="text"></td>
+                    </tr>
+                    <tr>
+                        <td><input type="text"></td>
+                        <td><input type="text"></td>
+                        <td><input type="text"></td>
+                        <td><input type="text"></td>
+                        <td><input type="text"></td>
+                    </tr>
+                    <tr>
+                        <td><input type="text"></td>
+                        <td><input type="text"></td>
+                        <td><input type="text"></td>
+                        <td><input type="text"></td>
+                        <td><input type="text"></td>
+                    </tr>
+                    <tr>
+                        <td><input type="text"></td>
+                        <td><input type="text"></td>
+                        <td><input type="text"></td>
+                        <td><input type="text"></td>
+                        <td><input type="text"></td>
+                    </tr>
+                    <tr>
+                        <td><input type="text"></td>
+                        <td><input type="text"></td>
+                        <td><input type="text"></td>
+                        <td><input type="text"></td>
+                        <td><input type="text"></td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="2">المجموع</td>
+                        <td><input type="text"></td>
+                        <td><input type="text"></td>
+                        <td><input type="text"></td>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+        
+        <div class="content-footer">
+            <button class="save-button">حفظ البيانات</button>
+        </div>
+    </div>
+
+    <script>
+        function addRow() {
+            const table = document.getElementById('codes-table').getElementsByTagName('tbody')[0];
+            const newRow = table.insertRow();
+            const cell1 = newRow.insertCell(0);
+            const cell2 = newRow.insertCell(1);
+            const cell3 = newRow.insertCell(2);
+            
+            cell1.innerHTML = '<input type="text">';
+            cell2.innerHTML = '<input type="text">';
+            cell3.innerHTML = '<button class="remove-symbol-button" onclick="removeRow(this)">حذف رمز</button>';
+        }
+        
+        function removeRow(button) {
+            const row = button.closest('tr');
+            row.remove();
+        }
+
+        function addPriority() {
+            const prioritySection = document.getElementById('priority-section');
+            const priorityCount = prioritySection.querySelectorAll('div').length;
+
+            if (priorityCount < 10) {
+                const newPriorityDiv = document.createElement('div');
+                newPriorityDiv.innerHTML = `
+                    <p>الأولوية ${priorityCount + 1}:</p>
+                    <input type="text">
+                    <button class="remove-priority-button" onclick="removePriority(this)">حذف أولوية</button>
+                `;
+                prioritySection.appendChild(newPriorityDiv);
+            }
+        }
+
+        function removePriority(button) {
+            const priorityDiv = button.closest('div');
+            priorityDiv.remove();
+        }
+    </script>
+</body>
+</html>

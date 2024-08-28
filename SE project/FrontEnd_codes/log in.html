@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>نظام تعديل الخطط الدراسية - الجامعة الأردنية</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-image: url('https://ammannet.net/sites/default/files/styles/news_landing/public/2020-02/%D8%A7%D9%84%D8%AC%D8%A7%D9%85%D8%B9%D8%A9-%D8%A7%D9%84%D8%A7%D9%94%D8%B1%D8%AF%D9%86%D9%8A%D8%A9.jpg?h=bc3cb860&itok=E6sQ8dRQ');
+            background-size: cover;
+            background-position: center;
+            direction: rtl;
+        }
+        .login-container {
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 400px;
+            text-align: center;
+        }
+        .login-container img {
+            width: 80px;
+            margin-bottom: 10px;
+        }
+        .login-container h1,
+        .login-container h2,
+        .login-container input,
+        .login-container button {
+            transition: all 0.3s ease;
+        }
+        .login-container h1,
+        .login-container h2 {
+            color: #343a40;
+        }
+        .login-container input[type="text"],
+        .login-container input[type="password"] {
+            width: calc(100% - 22px);
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ced4da;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        .login-container input[type="text"]:focus,
+        .login-container input[type="password"]:focus {
+            border-color: #80bdff;
+            outline: none;
+            box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+        }
+        .login-container button {
+            width: 100%;
+            padding: 12px;
+            background-color: #007bff;
+            color: #ffffff;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .login-container button:hover {
+            background-color: #0056b3;
+        }
+        .language-switch {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background-color: #007bff;
+            color: #ffffff;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="language-switch" onclick="switchLanguage()">English</div>
+    <div class="login-container">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/3/36/University_of_Jordan_Logo.svg" alt="شعار الجامعة الأردنية">
+        <h1>الجامعة الأردنية</h1>
+        <h2>نظام تعديل الخطط الدراسية</h2>
+        <form>
+            <input type="text" placeholder="اسم المستخدم" required>
+            <input type="password" placeholder="كلمة المرور" required>
+            <button type="submit">تسجيل الدخول</button>
+        </form>
+    </div>
+    <script>
+        const texts = {
+            ar: {
+                title: "نظام تعديل الخطط الدراسية - الجامعة الأردنية",
+                header1: "الجامعة الأردنية",
+                header2: "نظام تعديل الخطط الدراسية",
+                usernamePlaceholder: "اسم المستخدم",
+                passwordPlaceholder: "كلمة المرور",
+                submitButton: "تسجيل الدخول",
+                languageSwitch: "English"
+            },
+            en: {
+                title: "Curriculum Modification System - University of Jordan",
+                header1: "University of Jordan",
+                header2: "Curriculum Modification System",
+                usernamePlaceholder: "Username",
+                passwordPlaceholder: "Password",
+                submitButton: "Login",
+                languageSwitch: "العربية"
+            }
+        };
+
+        let currentLanguage = 'ar';
+
+        function switchLanguage() {
+            currentLanguage = currentLanguage === 'ar' ? 'en' : 'ar';
+            updateText();
+        }
+
+        function updateText() {
+            document.title = texts[currentLanguage].title;
+            document.querySelector('h1').textContent = texts[currentLanguage].header1;
+            document.querySelector('h2').textContent = texts[currentLanguage].header2;
+            document.querySelector('input[type="text"]').placeholder = texts[currentLanguage].usernamePlaceholder;
+            document.querySelector('input[type="password"]').placeholder = texts[currentLanguage].passwordPlaceholder;
+            document.querySelector('button').textContent = texts[currentLanguage].submitButton;
+            document.querySelector('.language-switch').textContent = texts[currentLanguage].languageSwitch;
+        }
+    </script>
+</body>
+</html>
